@@ -1,0 +1,4800 @@
+[1640006022.9037] Error running :
+SELECT option_name, option_value FROM wp_options WHERE autoload = 'yes'
+---- converted to ----
+SELECT option_name, option_value FROM wp_options WHERE autoload = 'yes'
+----> ERROR:  relation "wp_options" does not exist
+LINE 1: SELECT option_name, option_value FROM wp_options WHERE autol...
+                                              ^
+---------------------
+[1640006022.9043] Error running :
+SELECT option_name, option_value FROM wp_options
+---- converted to ----
+SELECT option_name, option_value FROM wp_options
+----> ERROR:  relation "wp_options" does not exist
+LINE 1: SELECT option_name, option_value FROM wp_options
+                                              ^
+---------------------
+[1640006022.9046] Error running :
+SELECT option_value FROM wp_options WHERE option_name = 'siteurl'
+---- converted to ----
+SELECT option_value FROM wp_options WHERE option_name = 'siteurl'
+----> ERROR:  relation "wp_options" does not exist
+LINE 1: SELECT option_value FROM wp_options WHERE option_name = 'sit...
+                                 ^
+---------------------
+[1640006022.9065] Error running :
+DESCRIBE wp_users;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_users' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006022.9069] Error running :
+DESCRIBE wp_usermeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_usermeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006022.9072] Error running :
+DESCRIBE wp_posts;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_posts' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006022.9075] Error running :
+DESCRIBE wp_comments;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_comments' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006022.9078] Error running :
+DESCRIBE wp_links;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_links' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006022.908] Error running :
+DESCRIBE wp_options;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_options' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006022.9083] Error running :
+DESCRIBE wp_postmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_postmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006022.9085] Error running :
+DESCRIBE wp_terms;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_terms' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006022.9088] Error running :
+DESCRIBE wp_term_taxonomy;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_term_taxonomy' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006022.909] Error running :
+DESCRIBE wp_term_relationships;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_term_relationships' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006022.9093] Error running :
+DESCRIBE wp_termmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_termmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006022.9095] Error running :
+DESCRIBE wp_commentmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_commentmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006044.0006] Error running :
+SELECT option_name, option_value FROM wp_options WHERE autoload = 'yes'
+---- converted to ----
+SELECT option_name, option_value FROM wp_options WHERE autoload = 'yes'
+----> ERROR:  relation "wp_options" does not exist
+LINE 1: SELECT option_name, option_value FROM wp_options WHERE autol...
+                                              ^
+---------------------
+[1640006044.0009] Error running :
+SELECT option_name, option_value FROM wp_options
+---- converted to ----
+SELECT option_name, option_value FROM wp_options
+----> ERROR:  relation "wp_options" does not exist
+LINE 1: SELECT option_name, option_value FROM wp_options
+                                              ^
+---------------------
+[1640006044.0011] Error running :
+SELECT option_value FROM wp_options WHERE option_name = 'siteurl'
+---- converted to ----
+SELECT option_value FROM wp_options WHERE option_name = 'siteurl'
+----> ERROR:  relation "wp_options" does not exist
+LINE 1: SELECT option_value FROM wp_options WHERE option_name = 'sit...
+                                 ^
+---------------------
+[1640006044.0021] Error running :
+DESCRIBE wp_users;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_users' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006044.0024] Error running :
+DESCRIBE wp_usermeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_usermeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006044.0027] Error running :
+DESCRIBE wp_posts;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_posts' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006044.003] Error running :
+DESCRIBE wp_comments;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_comments' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006044.0035] Error running :
+DESCRIBE wp_links;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_links' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006044.0039] Error running :
+DESCRIBE wp_options;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_options' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006044.0043] Error running :
+DESCRIBE wp_postmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_postmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006044.0046] Error running :
+DESCRIBE wp_terms;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_terms' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006044.0049] Error running :
+DESCRIBE wp_term_taxonomy;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_term_taxonomy' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006044.0053] Error running :
+DESCRIBE wp_term_relationships;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_term_relationships' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006044.0056] Error running :
+DESCRIBE wp_termmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_termmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006044.0059] Error running :
+DESCRIBE wp_commentmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_commentmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.8275] Error running :
+DESCRIBE wp_users;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_users' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.8279] Error running :
+DESCRIBE wp_usermeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_usermeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.8284] Error running :
+DESCRIBE wp_posts;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_posts' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.8287] Error running :
+DESCRIBE wp_comments;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_comments' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.8291] Error running :
+DESCRIBE wp_links;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_links' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.8294] Error running :
+DESCRIBE wp_options;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_options' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.8297] Error running :
+DESCRIBE wp_postmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_postmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.8301] Error running :
+DESCRIBE wp_terms;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_terms' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.8304] Error running :
+DESCRIBE wp_term_taxonomy;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_term_taxonomy' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.8307] Error running :
+DESCRIBE wp_term_relationships;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_term_relationships' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.8311] Error running :
+DESCRIBE wp_termmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_termmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.8314] Error running :
+DESCRIBE wp_commentmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_commentmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.9329] Error running :
+DESCRIBE wp_users;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_users' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.9332] Error running :
+DESCRIBE wp_usermeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_usermeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.9335] Error running :
+DESCRIBE wp_posts;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_posts' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.9337] Error running :
+DESCRIBE wp_comments;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_comments' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.9339] Error running :
+DESCRIBE wp_links;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_links' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.9342] Error running :
+DESCRIBE wp_options;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_options' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.9344] Error running :
+DESCRIBE wp_postmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_postmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.9346] Error running :
+DESCRIBE wp_terms;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_terms' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.9348] Error running :
+DESCRIBE wp_term_taxonomy;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_term_taxonomy' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.9351] Error running :
+DESCRIBE wp_term_relationships;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_term_relationships' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.9353] Error running :
+DESCRIBE wp_termmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_termmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.9355] Error running :
+DESCRIBE wp_commentmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_commentmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.9798] Error running :
+DESCRIBE wp_users;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_users' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.9801] Error running :
+DESCRIBE wp_usermeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_usermeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.9804] Error running :
+DESCRIBE wp_posts;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_posts' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.9806] Error running :
+DESCRIBE wp_comments;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_comments' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.9808] Error running :
+DESCRIBE wp_links;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_links' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.981] Error running :
+DESCRIBE wp_options;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_options' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.9813] Error running :
+DESCRIBE wp_postmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_postmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.9815] Error running :
+DESCRIBE wp_terms;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_terms' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.9817] Error running :
+DESCRIBE wp_term_taxonomy;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_term_taxonomy' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.982] Error running :
+DESCRIBE wp_term_relationships;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_term_relationships' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.9822] Error running :
+DESCRIBE wp_termmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_termmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006087.9824] Error running :
+DESCRIBE wp_commentmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_commentmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.7822] Error running :
+DESCRIBE wp_users;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_users' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.7826] Error running :
+DESCRIBE wp_usermeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_usermeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.7828] Error running :
+DESCRIBE wp_posts;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_posts' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.7832] Error running :
+DESCRIBE wp_comments;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_comments' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.7835] Error running :
+DESCRIBE wp_links;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_links' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.7837] Error running :
+DESCRIBE wp_options;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_options' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.784] Error running :
+DESCRIBE wp_postmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_postmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.7842] Error running :
+DESCRIBE wp_terms;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_terms' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.7845] Error running :
+DESCRIBE wp_term_taxonomy;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_term_taxonomy' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.7847] Error running :
+DESCRIBE wp_term_relationships;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_term_relationships' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.785] Error running :
+DESCRIBE wp_termmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_termmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.7852] Error running :
+DESCRIBE wp_commentmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_commentmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.8906] Error running :
+DESCRIBE wp_users;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_users' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.8911] Error running :
+DESCRIBE wp_usermeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_usermeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.8916] Error running :
+DESCRIBE wp_posts;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_posts' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.8919] Error running :
+DESCRIBE wp_comments;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_comments' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.8932] Error running :
+DESCRIBE wp_links;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_links' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.8941] Error running :
+DESCRIBE wp_options;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_options' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.8947] Error running :
+DESCRIBE wp_postmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_postmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.8953] Error running :
+DESCRIBE wp_terms;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_terms' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.8956] Error running :
+DESCRIBE wp_term_taxonomy;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_term_taxonomy' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.8959] Error running :
+DESCRIBE wp_term_relationships;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_term_relationships' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.8961] Error running :
+DESCRIBE wp_termmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_termmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.8965] Error running :
+DESCRIBE wp_commentmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_commentmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.9429] Error running :
+DESCRIBE wp_users;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_users' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.9432] Error running :
+DESCRIBE wp_usermeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_usermeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.9435] Error running :
+DESCRIBE wp_posts;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_posts' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.9437] Error running :
+DESCRIBE wp_comments;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_comments' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.944] Error running :
+DESCRIBE wp_links;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_links' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.9443] Error running :
+DESCRIBE wp_options;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_options' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.9445] Error running :
+DESCRIBE wp_postmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_postmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.9448] Error running :
+DESCRIBE wp_terms;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_terms' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.9451] Error running :
+DESCRIBE wp_term_taxonomy;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_term_taxonomy' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.9454] Error running :
+DESCRIBE wp_term_relationships;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_term_relationships' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.9456] Error running :
+DESCRIBE wp_termmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_termmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006106.9459] Error running :
+DESCRIBE wp_commentmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_commentmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.0123] Error running :
+DESCRIBE wp_users;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_users' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.0127] Error running :
+DESCRIBE wp_usermeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_usermeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.013] Error running :
+DESCRIBE wp_posts;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_posts' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.0133] Error running :
+DESCRIBE wp_comments;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_comments' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.0136] Error running :
+DESCRIBE wp_links;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_links' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.0139] Error running :
+DESCRIBE wp_options;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_options' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.0142] Error running :
+DESCRIBE wp_postmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_postmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.0145] Error running :
+DESCRIBE wp_terms;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_terms' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.0148] Error running :
+DESCRIBE wp_term_taxonomy;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_term_taxonomy' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.0152] Error running :
+DESCRIBE wp_term_relationships;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_term_relationships' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.0154] Error running :
+DESCRIBE wp_termmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_termmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.0157] Error running :
+DESCRIBE wp_commentmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_commentmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.12] Error running :
+DESCRIBE wp_users;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_users' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.1205] Error running :
+DESCRIBE wp_usermeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_usermeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.1208] Error running :
+DESCRIBE wp_posts;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_posts' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.1211] Error running :
+DESCRIBE wp_comments;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_comments' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.1214] Error running :
+DESCRIBE wp_links;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_links' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.1217] Error running :
+DESCRIBE wp_options;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_options' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.122] Error running :
+DESCRIBE wp_postmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_postmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.1223] Error running :
+DESCRIBE wp_terms;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_terms' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.1225] Error running :
+DESCRIBE wp_term_taxonomy;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_term_taxonomy' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.1228] Error running :
+DESCRIBE wp_term_relationships;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_term_relationships' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.1231] Error running :
+DESCRIBE wp_termmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_termmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.1233] Error running :
+DESCRIBE wp_commentmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_commentmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.1773] Error running :
+DESCRIBE wp_users;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_users' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.1779] Error running :
+DESCRIBE wp_usermeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_usermeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.1784] Error running :
+DESCRIBE wp_posts;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_posts' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.1788] Error running :
+DESCRIBE wp_comments;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_comments' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.1794] Error running :
+DESCRIBE wp_links;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_links' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.1798] Error running :
+DESCRIBE wp_options;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_options' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.1801] Error running :
+DESCRIBE wp_postmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_postmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.1804] Error running :
+DESCRIBE wp_terms;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_terms' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.1806] Error running :
+DESCRIBE wp_term_taxonomy;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_term_taxonomy' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.1809] Error running :
+DESCRIBE wp_term_relationships;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_term_relationships' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.1812] Error running :
+DESCRIBE wp_termmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_termmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.1814] Error running :
+DESCRIBE wp_commentmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_commentmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.2004] Error running :
+DESCRIBE wp_users;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_users' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.2007] Error running :
+DESCRIBE wp_usermeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_usermeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.2009] Error running :
+DESCRIBE wp_termmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_termmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.2011] Error running :
+DESCRIBE wp_terms;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_terms' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.2014] Error running :
+DESCRIBE wp_term_taxonomy;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_term_taxonomy' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.2016] Error running :
+DESCRIBE wp_term_relationships;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_term_relationships' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.2019] Error running :
+DESCRIBE wp_commentmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_commentmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.2021] Error running :
+DESCRIBE wp_comments;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_comments' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.2023] Error running :
+DESCRIBE wp_links;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_links' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.2025] Error running :
+DESCRIBE wp_options;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_options' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.2027] Error running :
+DESCRIBE wp_postmeta;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_postmeta' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
+[1640006121.2029] Error running :
+DESCRIBE wp_posts;
+---- converted to ----
+SELECT pg_attribute.attname AS "Field",
+	CASE pg_type.typname
+		WHEN 'int2' THEN 'int(4)'
+		WHEN 'int4' THEN 'int(11)'
+		WHEN 'int8' THEN 'bigint(20) unsigned'
+		WHEN 'varchar' THEN 'varchar(' || pg_attribute.atttypmod-4 || ')'
+		WHEN 'timestamp' THEN 'datetime'
+		WHEN 'text' THEN 'longtext'
+		ELSE pg_type.typname
+	END AS "Type",
+	CASE WHEN pg_attribute.attnotnull THEN ''
+		ELSE 'YES'
+	END AS "Null",
+	CASE pg_type.typname
+		WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(.*)''.*$')
+		WHEN 'timestamp' THEN CASE WHEN pg_attrdef.adsrc LIKE '%now()%' THEN '0000-00-00 00:00:00' ELSE pg_attrdef.adsrc END
+		ELSE pg_attrdef.adsrc
+	END AS "Default"
+FROM pg_class
+	INNER JOIN pg_attribute
+		ON (pg_class.oid=pg_attribute.attrelid)
+	INNER JOIN pg_type
+		ON (pg_attribute.atttypid=pg_type.oid)
+	LEFT JOIN pg_attrdef
+		ON (pg_class.oid=pg_attrdef.adrelid AND pg_attribute.attnum=pg_attrdef.adnum)
+WHERE pg_class.relname='wp_posts' AND pg_attribute.attnum>=1 AND NOT pg_attribute.attisdropped;
+----> ERROR:  column pg_attrdef.adsrc does not exist
+LINE 15:   WHEN 'varchar' THEN substring(pg_attrdef.adsrc FROM '^''(....
+                                         ^
+---------------------
